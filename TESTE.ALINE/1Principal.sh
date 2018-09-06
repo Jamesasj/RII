@@ -1,1 +1,1 @@
-aLine -i -l texto.txt -d hino_nacional
+aLine -i -l indice.dat -d resultado
