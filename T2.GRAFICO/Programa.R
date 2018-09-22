@@ -1,12 +1,9 @@
 file.name <- "https://inf.ufes.br/~elias/dataSets/basic-datasets.tar.gz"
-#file.context <- dirname(rstudioapi::getSourceEditorContext()$path)
 file.name2 <- "dataset.tar.gz"
-
-#setwd(file.context)
+file.name.output <- "indice.dat"
 
 file.folder.mainDir = getwd()
 file.folder.output <- "output"
-
 
 dir.create(file.path(file.folder.mainDir, file.folder.output), showWarnings = FALSE)
 
@@ -15,10 +12,17 @@ untar(file.name2, exdir = file.path(file.folder.mainDir, file.folder.output))
 
 
 file.list <- data.frame(arquivos = list.files(file.folder.output, full.names = TRUE))
-write.table(file.list,"indice.dat", quote = FALSE, row.names = FALSE, col.names = FALSE)
+write.table(file.list, file.name.output, quote = FALSE, row.names = FALSE, col.names = FALSE)
 
-retorn <- system("aLine -i -l indice.dat -d resultado")
+system("aLine -i -l indice.dat -d resultado")
+
+system("aLine --similarity -d resultado2 -- feature resultado/cache.txt")
 
 
-#setwd(file.path(file.folder.mainDir))
-#unlink(subDir, recursive = TRUE)
+#unlink(file.folder.output, recursive = TRUE)
+#unlink(file.name2)
+#unlink(file.name.output)
+
+
+#dados <- read.csv("resultado/dictionary.txt",sep = " ", header = FALSE)[1:4]
+#colnames(dados)<-c("qtd.letras","palavra","freq","qtd.docs")
