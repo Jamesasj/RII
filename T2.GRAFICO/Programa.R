@@ -1,3 +1,10 @@
+if(!require('tidyr')){
+  install.packages('tidyr')
+}
+if(!require('scatterplot3d')){
+  install.packages('scatterplot3d')
+}
+
 library(tidyr)
 library(scatterplot3d)
 
@@ -21,7 +28,6 @@ write.table(file.list, file.name.output, quote = FALSE, row.names = FALSE, col.n
 # executa o aLine
 system(paste("aLine -i -l indice.dat -d", file.folder.output2))
 system(paste("aLine --convert -d", file.folder.output2))
-
 
 dados.feature <- read.csv("resultado/features.mtx", sep = " ", header = FALSE)
 dados.dim <- dados.feature[2,] #obtem as dimentções da tabela
