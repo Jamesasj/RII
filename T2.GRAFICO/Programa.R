@@ -1,9 +1,13 @@
-if(!require('tidyr')){
-  install.packages('tidyr')
+ipak <- function(pkg){
+    new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+    if (length(new.pkg)) 
+        install.packages(new.pkg, dependencies = TRUE)
+    sapply(pkg, require, character.only = TRUE)
 }
-if(!require('scatterplot3d')){
-  install.packages('scatterplot3d')
-}
+
+# usage
+packages <- c("tidyr", "scatterplot3d")
+ipak(packages)
 
 library(tidyr)
 library(scatterplot3d)
@@ -30,14 +34,14 @@ system(paste("aLine -i -l indice.dat -d", file.folder.output2))
 system(paste("aLine --convert -d", file.folder.output2))
 
 dados.feature <- read.csv("resultado/features.mtx", sep = " ", header = FALSE)
-dados.dim <- dados.feature[2,] #obtem as dimentções da tabela
+dados.dim <- dados.feature[2,] #obtem as dimentï¿½ï¿½es da tabela
 dados.feature <- dados.feature[3:nrow(dados.feature),] # remove dados espurios
 colnames(dados.feature) <- c("documento","feature","qtd") # renomeia campos da tabela
 
 dados.feature.matrix <- spread(dados.feature, feature, qtd) # realiza tranformacao dos dados
 dados.feature.matrix[is.na(dados.feature.matrix)] <- 0 # substitui vazios por 0
 
-# Exporta o gráfico
+# Exporta o grï¿½fico
 jpeg("saida.jpg", quality = 100)
 scatterplot3d(dados.feature.matrix[2:4], pch=19, cex.symbols = 2, type = "p", color = dados.feature.matrix[1] , highlight.3d=TRUE, col.axis="blue", col.grid="lightblue")
 dev.off()
