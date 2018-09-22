@@ -1,9 +1,13 @@
+library(tidyr)
+library(scatterplot3d)
+
+file.folder.mainDir = getwd()
+
 file.name <- "https://inf.ufes.br/~elias/dataSets/basic-datasets.tar.gz"
 file.name2 <- "dataset.tar.gz"
 file.name.output <- "indice.dat"
-
-file.folder.mainDir = getwd()
 file.folder.output <- "output"
+file.folder.output2 <- "resultado"
 
 dir.create(file.path(file.folder.mainDir, file.folder.output), showWarnings = FALSE)
 
@@ -14,21 +18,26 @@ untar(file.name2, exdir = file.path(file.folder.mainDir, file.folder.output))
 file.list <- data.frame(arquivos = list.files(file.folder.output, full.names = TRUE))
 write.table(file.list, file.name.output, quote = FALSE, row.names = FALSE, col.names = FALSE)
 
-system("aLine -i -l indice.dat -d resultado")
+# executa o aLine
+system(paste("aLine -i -l indice.dat -d", file.folder.output2))
+system(paste("aLine --convert -d", file.folder.output2))
 
-system("aLine --similarity --features resultado/cache.txt -o resultMatrix ")
-
-
-#unlink(file.folder.output, recursive = TRUE)
-#unlink(file.name2)
-#unlink(file.name.output)
-
-dados.dicionario <- read.csv("resultado/dictionary.txt",sep = " ", header = FALSE)[1:4]
-dados.similidade <- read.csv("similaridade.txt", sep = " ", header = TRUE)
 
 dados.feature <- read.csv("resultado/features.mtx", sep = " ", header = FALSE)
-dados.dim <- dados.feature[2,]
-dados.feature <- dados.feature[3:nrow(dados.feature),]
-colnames(dados.feature) <- c("documento","feature","qtd")
+dados.dim <- dados.feature[2,] #obtem as dimentções da tabela
+dados.feature <- dados.feature[3:nrow(dados.feature),] # remove dados espurios
+colnames(dados.feature) <- c("documento","feature","qtd") # renomeia campos da tabela
 
-#colnames(dados)<-c("qtd.letras","palavra","freq","qtd.docs")
+dados.feature.matrix <- spread(dados.feature, feature, qtd) # realiza tranformacao dos dados
+dados.feature.matrix[is.na(dados.feature.matrix)] <- 0 # substitui vazios por 0
+
+# Exporta o gráfico
+jpeg("saida.jpg", quality = 100)
+scatterplot3d(dados.feature.matrix[2:4], pch=19, cex.symbols = 2, type = "p", color = dados.feature.matrix[1] , highlight.3d=TRUE, col.axis="blue", col.grid="lightblue")
+dev.off()
+
+# Apaga tudo
+unlink(file.folder.output, recursive = TRUE)
+unlink(file.folder.output2, recursive = TRUE)
+unlink(file.name2)
+unlink(file.name.output)
