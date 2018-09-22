@@ -1,8 +1,8 @@
 file.name <- "https://inf.ufes.br/~elias/dataSets/basic-datasets.tar.gz"
-file.context <- dirname(rstudioapi::getSourceEditorContext()$path)
+#file.context <- dirname(rstudioapi::getSourceEditorContext()$path)
 file.name2 <- "dataset.tar.gz"
 
-setwd(file.context)
+#setwd(file.context)
 
 file.folder.mainDir = getwd()
 file.folder.output <- "output"
