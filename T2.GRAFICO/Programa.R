@@ -16,7 +16,7 @@ write.table(file.list, file.name.output, quote = FALSE, row.names = FALSE, col.n
 
 system("aLine -i -l indice.dat -d resultado")
 
-system("aLine --similarity -d resultado2 -- feature resultado/cache.txt")
+system("aLine --similarity --features resultado/cache.txt -o resultMatrix ")
 
 
 #unlink(file.folder.output, recursive = TRUE)
