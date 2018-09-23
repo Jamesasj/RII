@@ -37,6 +37,14 @@ dev.off()
 
 
 
+dados.medias.row <- rowMeans(dados.feature.matrix[2:ncol(dados.feature.matrix)]) 
+write.table(dados.medias.row, "row-mean.dat", quote = FALSE, row.names = FALSE, col.names = FALSE)
+
+
+dados.medias.col <- colMeans(dados.feature.matrix[2:ncol(dados.feature.matrix)]) 
+write.table(dados.medias.col, "column-mean.dat", quote = FALSE, row.names = FALSE, col.names = FALSE)
+
+
 # Apaga tudo
 #unlink(file.folder.output, recursive = TRUE)
 #unlink(file.folder.output2, recursive = TRUE)
