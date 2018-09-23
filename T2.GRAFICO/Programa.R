@@ -38,7 +38,14 @@ dev.off()
 
 
 # Apaga tudo
+<<<<<<< HEAD
 #unlink(file.folder.output, recursive = TRUE)
 #unlink(file.folder.output2, recursive = TRUE)
 #unlink(file.name2)
 #unlink(file.name.output)
+=======
+unlink(file.folder.output, recursive = TRUE)
+unlink(file.folder.output2, recursive = TRUE)
+unlink(file.name2)
+unlink(file.name.output)
+>>>>>>> dce2a66c7196e8ce08948bb24e7304fe026cbe31
