@@ -1,14 +1,3 @@
-ipak <- function(pkg){
-    new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
-    if (length(new.pkg)) 
-        install.packages(new.pkg, dependencies = TRUE)
-    sapply(pkg, require, character.only = TRUE)
-}
-
-# usage
-packages <- c("tidyr", "scatterplot3d")
-ipak(packages)
-
 library(tidyr)
 library(scatterplot3d)
 
@@ -46,8 +35,10 @@ jpeg("saida.jpg", quality = 100)
 scatterplot3d(dados.feature.matrix[2:4], pch=19, cex.symbols = 2, type = "p", color = dados.feature.matrix[1] , highlight.3d=TRUE, col.axis="blue", col.grid="lightblue")
 dev.off()
 
+
+
 # Apaga tudo
-unlink(file.folder.output, recursive = TRUE)
-unlink(file.folder.output2, recursive = TRUE)
-unlink(file.name2)
-unlink(file.name.output)
+#unlink(file.folder.output, recursive = TRUE)
+#unlink(file.folder.output2, recursive = TRUE)
+#unlink(file.name2)
+#unlink(file.name.output)
