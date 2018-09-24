@@ -18,7 +18,7 @@ write.table(file.list, file.name.output, quote = FALSE, row.names = FALSE, col.n
 # executa o aLine
 system(paste("aLine -i -l indice.dat -d", file.folder.output2))
 system(paste("aLine --convert -d", file.folder.output2))
-# system("aLine ine --similarity --features resultado/cache.txt -o resultado2") #calculo da similaridade
+system("aLine ine --similarity --features resultado/cache.txt -o resultado2") #calculo da similaridade
 
 library(tidyr)
 library(scatterplot3d)
