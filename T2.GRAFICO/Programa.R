@@ -1,6 +1,3 @@
-library(tidyr)
-library(scatterplot3d)
-
 file.folder.mainDir = getwd()
 
 file.name <- "https://inf.ufes.br/~elias/dataSets/basic-datasets.tar.gz"
@@ -22,6 +19,9 @@ write.table(file.list, file.name.output, quote = FALSE, row.names = FALSE, col.n
 system(paste("aLine -i -l indice.dat -d", file.folder.output2))
 system(paste("aLine --convert -d", file.folder.output2))
 
+library(tidyr)
+library(scatterplot3d)
+setwd("C:\\Users\\james\\PROJETOS\\RII\\T2.GRAFICO")
 dados.feature <- read.csv("resultado/features.mtx", sep = " ", header = FALSE)
 dados.dim <- dados.feature[2,] #obtem as diment��es da tabela
 dados.feature <- dados.feature[3:nrow(dados.feature),] # remove dados espurios
@@ -35,11 +35,8 @@ jpeg("saida.jpg", quality = 100)
 scatterplot3d(dados.feature.matrix[2:4], pch=19, cex.symbols = 2, type = "p", color = dados.feature.matrix[1] , highlight.3d=TRUE, col.axis="blue", col.grid="lightblue")
 dev.off()
 
-
-
 dados.medias.row <- rowMeans(dados.feature.matrix[2:ncol(dados.feature.matrix)]) 
 write.table(dados.medias.row, "row-mean.dat", quote = FALSE, row.names = FALSE, col.names = FALSE)
-
 
 dados.medias.col <- colMeans(dados.feature.matrix[2:ncol(dados.feature.matrix)]) 
 write.table(dados.medias.col, "column-mean.dat", quote = FALSE, row.names = FALSE, col.names = FALSE)
