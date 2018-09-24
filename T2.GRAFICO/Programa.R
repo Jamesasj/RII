@@ -19,9 +19,11 @@ write.table(file.list, file.name.output, quote = FALSE, row.names = FALSE, col.n
 system(paste("aLine -i -l indice.dat -d", file.folder.output2))
 system(paste("aLine --convert -d", file.folder.output2))
 # system("aLine ine --similarity --features resultado/cache.txt -o resultado2") #calculo da similaridade
+
 library(tidyr)
 library(scatterplot3d)
-setwd("C:\\Users\\james\\PROJETOS\\RII\\T2.GRAFICO")
+
+#setwd("C:\\Users\\james\\PROJETOS\\RII\\T2.GRAFICO")
 dados.feature <- read.csv("resultado/features.mtx", sep = " ", header = FALSE)
 dados.dim <- dados.feature[2,] #obtem as diment��es da tabela
 dados.feature <- dados.feature[3:nrow(dados.feature),] # remove dados espurios
@@ -39,7 +41,7 @@ dados.medias.row <- rowMeans(dados.feature.matrix[2:ncol(dados.feature.matrix)])
 write.table(dados.medias.row, "row-mean.dat", quote = FALSE, row.names = FALSE, col.names = FALSE)
 
 dados.medias.col <- colMeans(dados.feature.matrix[2:ncol(dados.feature.matrix)]) 
-write.table(dados.medias.col, "column-mean.dat", quote = FALSE, row.names = FALSE, col.names = FALSE)
+write.table(t(dados.medias.col), "column-mean.dat", quote = FALSE, row.names = FALSE, col.names = FALSE)
 
 
 # Apaga tudo
