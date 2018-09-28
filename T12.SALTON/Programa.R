@@ -10,3 +10,5 @@ write.table(arquivos.amostra, "indice.dat", quote = F,row.names =  F, col.names 
 system("aLine -i -l indice.dat -d output2")
 system("aLine --convert -d output2")
 
+dados.features <-read.csv("output2/features.mtx", sep = " ", header = F)
+dados.features <- dados.features[3:nrow(dados.features),]
