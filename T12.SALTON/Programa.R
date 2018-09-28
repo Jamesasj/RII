@@ -1,4 +1,4 @@
-setwd("/home/james/Documents/RII/T12.SALTON")
+#setwd("/home/james/Documents/RII/T12.SALTON")
 dataset.link <- "https://inf.ufes.br/~elias/dataSets/aTribuna-21dir.tar.gz"
 folders.raiz <- getwd()
 
