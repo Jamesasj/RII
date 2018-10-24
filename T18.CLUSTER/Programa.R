@@ -19,5 +19,4 @@ dados$word <- NULL
 colnames(dados) <- c("twitt", "palavra")
 dados2 <- dados %>% count(twitt, palavra)
 
-View(dados.df %>% inner_join(dados.fw))
-dados.fw$id
+write.table(dados2, "saida.csv")
