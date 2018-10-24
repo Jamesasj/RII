@@ -9,8 +9,15 @@ library(dplyr)
 
 dados.twitter <- data.frame(id = 1:nrow(dataset), text = as.character(dataset$text))
 dados.twitter$text <- as.character(dados.twitter$text)
-
 dados.df <- dados.twitter %>% unnest_tokens(word, text)
-
 dados.fw <- dados.df %>% count(word, sort = T)
-dados.fw$ id <- c(1:nrow(dados.fw))
+dados.fw$id <- c(1:nrow(dados.fw))
+
+dados <- left_join(dados.df, dados.fw, by=c('word'='word'))
+dados$n <- NULL
+dados$word <- NULL
+colnames(dados) <- c("twitt", "palavra")
+dados2 <- dados %>% count(twitt, palavra)
+
+View(dados.df %>% inner_join(dados.fw))
+dados.fw$id
