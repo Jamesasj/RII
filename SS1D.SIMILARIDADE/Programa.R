@@ -1,4 +1,4 @@
-setwd("C:/Users/james/PROJETOS/RII/SS1D.SIMILARIDADE/")
+#setwd("C:/Users/james/PROJETOS/RII/SS1D.SIMILARIDADE/")
 file.folder.mainDir = getwd()
 
 file.name <- "https://inf.ufes.br/~elias/dataSets/basic-datasets.tar.gz"
