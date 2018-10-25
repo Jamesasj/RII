@@ -41,6 +41,8 @@ dados2 <- rbind(lista, dados2)
 cat("%%FEATURES.MTX\n", file= "features.mtx", append = F )
 write.table(dados2, "features.mtx", append = T, row.names = F, col.names = F)
 
+system("aLine --similarity -m euclidean --features resultado/cache.txt -o resultado2") #calculo da similaridade
+
 write.table(dados.classe, "classe.csv", row.names = F)
 write.table(dados.fw, "dicionario.csv", row.names = F)
 
