@@ -15,7 +15,7 @@ dataset.classe1.teste = data.frame(id = c(0:4300))
 write.table(dataset.classe1.teste, file = "treino.txt", col.names =F, row.names = F, append = F)
 
 dataset.classe2.teste = data.frame(id = c(4300:nrow(dataset.matrix)))
-write.table(dataset.classe1.teste, file = "teste.txt", col.names =F, row.names = F, append = F)
+write.table(dataset.classe2.teste, file = "teste.txt", col.names =F, row.names = F, append = F)
 
 system("aLine --classifier --algorithm knn --features marcoCivil/marcocivil.mtx --train treino.txt --test teste.txt --labels marcoCivil/mc1.class -k 3 -o output1.txt")
 
