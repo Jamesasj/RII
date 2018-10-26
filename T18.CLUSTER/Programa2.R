@@ -1,5 +1,3 @@
-
-library(tidytext)
 library(dplyr)
 
 # T18) Utilize a libDocumento para reproduzir os experimentos descritos no artigo
