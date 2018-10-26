@@ -13,7 +13,7 @@ compila:
 	python t1-main.py
 	
 executa:
-	aLine --clustering --algorithm kmeans --features marcoCivil/marcocivil.mtx -k 4 --num-inter 5
+	aLine --clustering --algorithm knn --features marcoCivil/marcocivil.mtx -k 4 --num-inter 5
 
 clear:
 	rm -Rf arquivosaida
