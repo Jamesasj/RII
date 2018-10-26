@@ -1,4 +1,3 @@
-library(dplyr)
 
 # T18) Utilize a libDocumento para reproduzir os experimentos descritos no artigo
 # (OLIVEIRA et al., 2014). Para este experimento utilize obrigatoriamente as
