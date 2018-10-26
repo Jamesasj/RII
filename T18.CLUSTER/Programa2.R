@@ -20,4 +20,4 @@ write.table(dataset.classe1.teste, file = "teste.txt", col.names =F, row.names =
 system("aLine --classifier --algorithm knn --features marcoCivil/marcocivil.mtx --train treino.txt --test teste.txt --labels marcoCivil/mc1.class -k 3 -o output1.txt")
 
 
-system("aLine --classifier --algorithm knn --features marcoCivil/marcocivil.mtx --train treino.txt --test teste.txt --labels marcoCivil/mc2.class -k 13 -o output2.txt")
+system("aLine --classifier --algorithm knn --features marcoCivil/marcocivil.mtx --train treino.txt --test teste.txt --labels marcoCivil/mc2.class -k 12 -o output2.txt")
