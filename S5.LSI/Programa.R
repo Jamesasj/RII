@@ -1,4 +1,4 @@
-setwd("C:/Users/james/PROJETOS/RII/S5.LSI/")
+#setwd("C:/Users/james/PROJETOS/RII/S5.LSI/")
 library(SnowballC)
 library(lsa)
 
